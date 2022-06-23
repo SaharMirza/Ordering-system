@@ -1,12 +1,17 @@
-import React from "react";
-import './style.css'
+import React from 'react';
+import Logo from '../Logo';
+import './style.css';
 
 const Footer = () => {
-    return(
-        <div>
-            <h1>Footer</h1>
-        </div>
-    )
-}
+  return (
+    <footer>
+      <p>
+        We're a team of Professional cooks who are excited about their food,
+        amazing skills and expertiness in cooking.
+      </p>
+      <Logo />
+    </footer>
+  );
+};
 
 export default Footer;

@@ -1,19 +1,51 @@
 import React from 'react';
-import logo from './logo.png';
 import './style.css';
+import { getProfile } from '../../../API calls/Restaurants';
 
-const Logo = () => (
-  <div className='header-content_logo'>
+const Logo = () => {
+  const id = localStorage.getItem("RID")
+  const [restaurant, setRestuarant] = React.useState([]);
+  const [Logo, setLogo] = React.useState("");
+  const [Cuisine, setCuisine] = React.useState("");
+  const [RName, setRName] = React.useState("");
+  
+  //getting all resturants
+  React.useEffect(() => {
+    const view2 = async () => {
+      getProfile().then((response) => {
+        setRestuarant(response.data.products)
+      })
+    }
+    view2()
+  }, [])
+
+  React.useEffect(() => {
+    const view = async () => {
+      console.log(restaurant)
+      for (var item in restaurant) {
+        if (restaurant[item].R_ID == id) {
+          setLogo(restaurant[item].R_logo)
+          setCuisine(restaurant[item].R_Cuisine)
+          setRName(restaurant[item].R_name)
+         }
+      }
+    }
+    view()
+  }, [restaurant])
+
+  return (
+ <div className='header-content_logo'>
     <div>
-      <img src={logo} alt='logo' />
+      <img src={Logo} alt='logo' />
       <span>
-        <b>Taste</b>
+        <b>{RName}</b>
       </span>
     </div>
     <p>
-      <b>Restaurant & BBQ</b>
+      <b>{Cuisine}</b>
     </p>
   </div>
-);
+  )
+};
 
 export default Logo;

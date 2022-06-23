@@ -6,6 +6,7 @@ import Banner from '../../components/Home/Banner'
 
 
 const Home = () => {
+    localStorage.setItem("RID",3)
     return(
         <div>
          {/* banner */}

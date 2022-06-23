@@ -1,12 +1,26 @@
-import React from "react";
-import './style.css'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import './style.css';
 
-const CardCountButton = () => {
-    return (
-        <div>
-            <h1>CardCountButton</h1>
-        </div>
-    )
-}
+const CartCountButton = ({ cartCount }) => {
+  const [navigate, setNavigate] = React.useState(false);
+  const redirect = async () => {
 
-export default CardCountButton;
+    setNavigate(true);
+  }
+
+  if (navigate) {
+    return <Navigate to="/cart" />;
+  }
+
+  return (
+    <div className='btnCartCount' onClick={redirect}>
+      <div className='count'>{cartCount >= 100 ? '99+' : cartCount}</div>
+      <i class='fas fa-shopping-cart'></i>
+    </div>
+  );
+};
+
+
+
+export default CartCountButton;
