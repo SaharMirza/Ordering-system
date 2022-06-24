@@ -1,9 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import './style.css';
 import { getFoodItems } from '../../../API calls/FoodItems';
 import MenuItem from './MenuItem';
 
-const Menu = () => {
+const Menu = forwardRef(({ list }, ref) => {
+    
 
     const id = localStorage.getItem("RID")
     const [ItemsData, setItemsData] = React.useState([]);
@@ -34,13 +35,13 @@ const Menu = () => {
 
 
     return (
-        <main>
+        <main ref={ref}>
             {menuItemsData.map((item) => (
 
                 <MenuItem item={item} key={item._id} />
             ))}
         </main>
     )
-}
+})
 
 export default Menu;
