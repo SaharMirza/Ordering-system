@@ -15,6 +15,7 @@ const EmptyCart = () => {
   return (
     <div className='emptyCart'>
       <img src='https://toppng.com/uploads/preview/sign-in-empty-cart-ico-11562967535jqgfqtduyd.png' alt='' />
+      Your Cart is Empty
       <button onClick={redirect}>
         <i className='fas fa-long-arrow-alt-left'></i> Shop Now
       </button>

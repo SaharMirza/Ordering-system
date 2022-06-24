@@ -5,17 +5,9 @@ import Menu from '../../components/common/Menu'
 import Banner from '../../components/Home/Banner'
 import { getFoodItems } from '../../API calls/FoodItems';
 
-
 const Home = () => {
 
     localStorage.setItem("RID",3)
-
-    const menuRef = useRef();
-
-    const handleScrollMenu = () => {
-      menuRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
-
     const id = localStorage.getItem("RID")
     const [ItemsData, setItemsData] = React.useState([]);
     const [menuItemsData, setmenuItemsData] = React.useState([]);
@@ -42,7 +34,11 @@ const Home = () => {
         view()
     }, [ItemsData])
 
+    const menuRef = useRef();
 
+    const handleScrollMenu = () => {
+      menuRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return(
         <div>
