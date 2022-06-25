@@ -9,14 +9,12 @@ const App = () => {
     <div className='container'>
       <Router>
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/:RID" exact element={<Home />} />
           <Route path="/cart" exact element={<Cart />} />
-          <Route path ="*" exact element={<Home/>} /> 
+          <Route path ="*" exact element={"404 NOT FOUND"} /> 
         </Routes>
       </Router>
-
     </div>
-
   );
 };
 

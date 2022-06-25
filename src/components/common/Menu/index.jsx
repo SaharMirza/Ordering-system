@@ -1,12 +1,8 @@
 import React, { forwardRef } from "react";
 import './style.css';
-import { getFoodItems } from '../../../API calls/FoodItems';
 import MenuItem from './MenuItem';
 
 const Menu = forwardRef(({ list }, ref) => {    
-
-    
-    
 
     return (
         <main ref={ref}>

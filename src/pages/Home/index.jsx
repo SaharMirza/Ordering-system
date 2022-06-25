@@ -6,9 +6,8 @@ import Banner from '../../components/Home/Banner'
 import { getFoodItems } from '../../API calls/FoodItems';
 
 const Home = () => {
-
-    localStorage.setItem("RID",3)
-    const id = localStorage.getItem("RID")
+    const id = Number(window.location.pathname.split('/')[1]) // ans is 3
+    localStorage.setItem("RID", id)
     const [ItemsData, setItemsData] = React.useState([]);
     const [menuItemsData, setmenuItemsData] = React.useState([]);
     var prior = [];
@@ -37,20 +36,20 @@ const Home = () => {
     const menuRef = useRef();
 
     const handleScrollMenu = () => {
-      menuRef.current.scrollIntoView({ behavior: 'smooth' });
+        menuRef.current.scrollIntoView({ behavior: 'smooth' });
     };
 
-    return(
+    return (
         <div>
-         {/* banner */}
-         <Banner handleScrollMenu={handleScrollMenu} />        
-         {/* Menu */}
-         <Menu list={menuItemsData} ref={menuRef} />
-         {/* Footer */}
-         <Footer/>
-         {/* Cart Count Button */}
-        <CardCountButton/>
-         </div>
+            {/* banner */}
+            <Banner handleScrollMenu={handleScrollMenu} />
+            {/* Menu */}
+            <Menu list={menuItemsData} ref={menuRef} />
+            {/* Footer */}
+            <Footer />
+            {/* Cart Count Button */}
+            <CardCountButton />
+        </div>
     );
 };
 
