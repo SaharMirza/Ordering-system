@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import Logo from '../../common/Logo';
+import Navbar from '../../common/Navbar';
 import { getProfile } from '../../../API calls/Restaurants';
 
 
@@ -39,7 +39,7 @@ const Banner = ({ handleScrollMenu }) => {
   return (
     <header>
       <div className='header-content'>
-        <Logo />
+        <Navbar />
         <div className='content-main'>
           <h1>{BannerHeadline}</h1>
           <p>{BannerDes}</p>

@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import CardCountButton from '../../components/common/CartCountButton'
 import Footer from '../../components/common/Footer'
 import Menu from '../../components/common/Menu'
+import Navbar from '../../components/common/Navbar'
 import Banner from '../../components/Home/Banner'
 import { getFoodItems } from '../../API calls/FoodItems';
 
@@ -41,6 +42,7 @@ const Home = () => {
 
     return (
         <div>
+            
             {/* banner */}
             <Banner handleScrollMenu={handleScrollMenu} />
             {/* Menu */}

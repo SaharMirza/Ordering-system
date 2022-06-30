@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { CreateOrder } from '../../API calls/Orders';
 import EmptyCart from '../../components/Cart/EmptyCart';
 import Footer from '../../components/common/Footer';
 import Logo from '../../components/common/Logo';
@@ -12,9 +13,15 @@ import {
 } from '../../redux/cart/cart.selector';
 import './style.css';
 
+
 const Cart = ({ cartCount, cartList, cartTotal }) => {
 
-  console.log(cartList)
+  // Adding Order to Database
+  const ordersave = () => {
+    CreateOrder(cartList, cartTotal).then((response) => {
+      console.log(response.data)
+    })
+  }
 
   return (
     <>
@@ -30,6 +37,7 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
             <Menu list={cartList} />
           </div>
           <h3 className='orders-total'>Your Total ${cartTotal}</h3>
+          <button type="button" onClick={ordersave} class="btn btn-primary">Primary</button>
         </div>
       )}
       <Footer />

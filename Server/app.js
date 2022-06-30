@@ -7,6 +7,7 @@ require ('dotenv').config()
 const cors = require("cors");
 const restaurantRoutes = require('./routes/restaurant');
 const fooditemRoute = require('./Routes/Food_items')
+const Orders = require('./Routes/order')
 
 // connect db to node.js using link from database access and writing password 
 mongoose.connect('mongodb+srv://SaharMirza:Strawberry2@eatery.mwwmq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json()); //data recieved should be in JSON
 app.use('/restaurant', restaurantRoutes);
 app.use('/Food_item', fooditemRoute)
+app.use('/Order',Orders)
 
 //catch wrong route 
 app.use(async (req,res,next) => {

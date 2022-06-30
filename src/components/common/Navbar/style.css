@@ -1,0 +1,28 @@
+.navbar-nav {
+    margin-left: 155%;
+}
+
+.navbar {
+    color: rgb(0, 0, 0);
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: #d1222b;
+}
+
+.nav-link {
+    margin-left: 1em;
+}
+
+@media (max-width: 768px) {
+
+    
+    .nav-link {
+        margin-left: 100;
+    }
+
+    .navbar {
+        height: 10%;
+    }
+}

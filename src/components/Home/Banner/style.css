@@ -46,6 +46,7 @@ header {
   }
   
   @media (max-width: 768px) {
+   
     .content-main h1 {
       font-size: 1.2rem;
       margin-bottom: 1rem;
