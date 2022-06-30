@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 import Logo from '../../common/Logo';
 
-
 const Navbar = () => {
   const id = localStorage.getItem("RID")
   return (

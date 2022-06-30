@@ -4,8 +4,8 @@ export async function CreateOrder(Products, OrderTotal) {
 
   var today = new Date();
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-  var time = today.getTime()
-
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
   var response = axios.post("http://localhost:3000/Order",
     {
       Products: Products,
