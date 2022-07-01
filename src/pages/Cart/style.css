@@ -37,11 +37,16 @@
   margin-left: 86%;
 }
 
-.cashbutton {
+.button {
   margin-left: 3%;
   margin-bottom: 3%;
   width: 10em;
-  background-color: beige;
+  transition-duration: 0.4s;
+}
+
+.button:hover {  
+  background-color: #9c9898; 
+  color: white;
 }
 
 .card-text {

@@ -14,7 +14,10 @@ router.post('/', (req, res, next) => {
         OrderDate:req.body.OrderDate,
         Creation_time: req.body.Creation_time,
         Delivered_time: req.body.Delivered_time,
-        isActive:true
+        isActive:true,
+        DeliveryAddress:req.body.DeliveryAddress,
+        SpecialInstructions: req.body.SpecialInstructions,
+        PaymentMethod:req.body.PaymentMethod
     })
 
     Order.save() // saving data to database

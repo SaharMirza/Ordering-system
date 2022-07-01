@@ -35,8 +35,17 @@ const orderSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-
-
+    DeliveryAddress: {
+        type: String,
+        required: true
+    },
+    SpecialInstructions: {
+        type: String
+    },
+    PaymentMethod:{
+        type: String,
+        required: true
+    }
 });
 
 

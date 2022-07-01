@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -16,10 +16,13 @@ import './style.css';
 
 
 const Cart = ({ cartCount, cartList, cartTotal }) => {
+  const [devadd, setdevadd] = React.useState()
+  const [specinst,setspecinst]=React.useState()
+  const [paymethod,setpaymethod]=React.useState("")
 
   // Adding Order to Database
   const ordersave = () => {
-    CreateOrder(cartList, cartTotal).then((response) => {
+    CreateOrder(cartList, cartTotal,devadd,specinst,paymethod).then((response) => {
       alert("Order Successfull")     
     })
   }
@@ -38,18 +41,22 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
               <div class="card"  >
                 <label class="form-label" id="label">Your Delivery Address</label>
                 <input type="text" class="form-control"
-                />
+                onChange={(event) => {
+                  setdevadd(event.target.value);
+                }}/>
               </div>
               <div class="card" >
                 <label class="form-label"id="label">Special Instructions</label>
                 <input type="text" placeholder="Add any comments, e.g. allegries or delivery instructions " class="form-control"
-                />
+               onChange={(event) => {
+                setspecinst(event.target.value);
+              }} />
               </div>
             </div>
             <div class="column">
               <div class="card" >
                 <label class="form-label" id="label">Payment Methods</label>                
-                  <button type="button" class="cashbutton" >
+                  <button type="button" class="button" onClick={()=>setpaymethod("Cash on Delivery")}>
                     <img src="https://icon-library.com/images/cash-on-delivery-icon/cash-on-delivery-icon-5.jpg" class="card-img-top" id="image" alt="..." />
                     <h1 class="card-title" >Cash On Delivery</h1>
                   </button>               
