@@ -23,12 +23,13 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
   // Adding Order to Database
   const ordersave = () => {
     CreateOrder(cartList, cartTotal,devadd,specinst,paymethod).then((response) => {
-      alert("Order Successfull")     
+      alert("Order Successful")     
     })
   }
 
   return (
     <>
+    <div className='Containe' style={{marginLeft:50, marginRight:50, marginTop:20}}>
       <div className='cart-header'>
         <Logo />
       </div>
@@ -37,25 +38,25 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
       ) : (
         <div className='orders'>
           <div class="row">
-            <div class="column">
+            <div class="col">
               <div class="card"  >
-                <label class="form-label" id="label">Your Delivery Address</label>
-                <input type="text" class="form-control"
+                <label class="form-lael" id="label">Your Delivery Address</label>
+                <input type="text" class="form-control" id='form-control'
                 onChange={(event) => {
                   setdevadd(event.target.value);
                 }}/>
               </div>
               <div class="card" >
-                <label class="form-label"id="label">Special Instructions</label>
-                <input type="text" placeholder="Add any comments, e.g. allegries or delivery instructions " class="form-control"
+                <label class="form-lael"id="label">Special Instructions</label>
+                <input type="text" placeholder="Add any comments, e.g. allegries or delivery instructions " class="form-control"  id='form-control'
                onChange={(event) => {
                 setspecinst(event.target.value);
               }} />
               </div>
             </div>
-            <div class="column">
+            <div class="col">
               <div class="card" >
-                <label class="form-label" id="label">Payment Methods</label>                
+                <label class="form-lael" id="label">Payment Methods</label>                
                   <button type="button" class="button" onClick={()=>setpaymethod("Cash on Delivery")}>
                     <img src="https://icon-library.com/images/cash-on-delivery-icon/cash-on-delivery-icon-5.jpg" class="card-img-top" id="image" alt="..." />
                     <h1 class="card-title" >Cash On Delivery</h1>
@@ -71,7 +72,9 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
           <button type="button" onClick={ordersave} class="btn btn-danger" id='placeorder'>Place Order</button>
         </div>
       )}
-      <Footer />
+      
+    </div>
+    <Footer />
     </>
   );
 };

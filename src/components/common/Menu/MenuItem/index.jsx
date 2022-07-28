@@ -21,7 +21,8 @@ const MenuItem = ({
   cartAddItem,
   cartRemoveItem,
 }) => {
-  const{_id,Item_Name,Item_price,Item_picture,Item_desc}=item    
+  const { _id, Item_Name, Item_price, Item_picture, Item_desc } = item
+  const loggedin = localStorage.getItem("AcessToken")
   const handleQuantity = () => {
     let quantity = 0;
     if (cartCount !== 0) {
@@ -35,20 +36,27 @@ const MenuItem = ({
 
   return (
     <div className='item'>
-          <img src={Item_picture} alt='food' />
-          <div className='item-head_desc'>
-            <p className='head_desc-name'>{Item_Name}</p>
-            <p className='head_desc-info'>
-              <small>{Item_desc}</small>
-            </p>
-          </div>
+      <img src={Item_picture} alt='food' />
+      <div className='item-head_desc'>
+        <p className='head_desc-name'>{Item_Name}</p>
+        <p className='head_desc-info'>
+          <small>{Item_desc}</small>
+        </p>
+      </div>
       <div className='item-foot_desc'>
         <span className='foot_desc-price'>${Item_price}</span>
-        <ButtonAddRemoveItem
-          quantity={handleQuantity()}
-          handleRemoveItem={() => cartRemoveItem(item)}
-          handleAddItem={() => cartAddItem(item)}
-        />
+        {loggedin ? (
+          <ButtonAddRemoveItem
+            quantity={handleQuantity()}
+            handleRemoveItem={() => cartRemoveItem(item)}
+            handleAddItem={() => cartAddItem(item)}
+          />
+        ) :
+          (
+            null
+          )
+        }
+
       </div>
     </div>
   );

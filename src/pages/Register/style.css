@@ -1,0 +1,22 @@
+.formname{
+    margin-top: 10%;
+    text-align: center;
+}
+
+.form-control{
+    margin-left: 25%;
+    text-align: center;
+    width: 10%;
+}
+
+
+
+.form-label{
+    margin-left: 25%;
+}
+
+#submitbutton{
+    margin-left: 25%;
+    margin-top: 5%;
+    width: 50%;
+}

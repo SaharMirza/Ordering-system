@@ -8,7 +8,7 @@ export async function AddFoodItems(updatename,updatecategory,updateprice,updateU
     Item_price:updateprice,
     Item_picture: updateURL,
     Item_desc: updatedes,
-    R_ID:R_ID
+    R_ID:3
 
   })
     .catch(err => {

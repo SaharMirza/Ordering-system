@@ -6,7 +6,7 @@ import { getProfile } from '../../../API calls/Restaurants';
 
 const Banner = ({ handleScrollMenu }) => {
 
-  const id = localStorage.getItem("RID")
+  const id = 3
   const [restaurant, setRestuarant] = React.useState([]);
   const [BannerImage, setBannerImage] = React.useState("");
   const [BannerHeadline, setBannerHeadline] = React.useState("");
@@ -38,8 +38,7 @@ const Banner = ({ handleScrollMenu }) => {
 
   return (
     <header>
-      <div className='header-content'>
-        <Navbar />
+      <div className='header-content'>       
         <div className='content-main'>
           <h1>{BannerHeadline}</h1>
           <p>{BannerDes}</p>

@@ -1,5 +1,5 @@
 .navbar-nav {
-    margin-left: 155%;
+    margin-left:70% ;
 }
 
 .navbar {
@@ -15,8 +15,11 @@
     margin-left: 1em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
+    .navbar-nav {
+        margin-left: 0%;
+    }
     
     .nav-link {
         margin-left: 100;

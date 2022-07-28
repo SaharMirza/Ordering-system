@@ -6,72 +6,94 @@ import axios from 'axios'
 
 const Login = () => {
     const [data, setData] = useState({ email: "", password: "" });
-	const [error, setError] = useState("");
+    const [error, setError] = useState("");
 
     const handleChange = ({ currentTarget: input }) => {
-		setData({ ...data, [input.name]: input.value });
-	};
+        setData({ ...data, [input.name]: input.value });
+    };
 
     const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
+        e.preventDefault();
+        try {
             const config = {
-                headers:{
+                headers: {
                     "Content-type": "application/json"
-                    
+
                 }
             }
-			var url = "http://localhost:3000/user/login";
-			 await axios.post(url, data, config).then((response) => {
-                 var data = response.data
-                console.log(response.status);
-                console.log(data.accessToken);
-                console.log(data.refreshToken)                
+            var url = "http://localhost:3000/user/login";
+            await axios.post(url, data, config).then((response) => {
+                var data = response.data
 
-				if (data.role==='customer') {
-                
-				alert('Login successful')
-                // window.location = "/Home";
-				}
-				else {
-					alert('Please check your username and password')
-				}
-              });
+                if (data.role === 'customer') {
 
-            // console.log(data)
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500 
-                
-			) {
-				setError(error.response.data.message);
+                    alert('Login successful')
+                    localStorage.setItem("AcessToken", data.accessToken);
+                    localStorage.setItem("RefreshToken", data.refreshToken)
+                    window.location = "/Home";
+                }
+                else {
+                    alert('Please check your username and password')
+                }
+            });
+
+        } catch (error) {
+            if (
+                error.response &&
+                error.response.status >= 400 &&
+                error.response.status <= 500
+
+            ) {
+                setError(error.response.data.message);
                 console.log(error.response)
-			}
-		}
-	};
+            }
+        }
+    };
 
-  return (
-    <div className='CustomerLogin_Container'>
-        <div class="login-box">
-            <h1>Login</h1>
+    return (
+
+        <div class="login-box" >
+            <h1 class="formname">Login</h1>
             <form onSubmit={handleSubmit}>
-            <div className="textbox">
-                <i className="fas fa-user"></i>
-                <input type="email" name="email" placeholder="Email" required  onChange={handleChange} value={data.email}/>
+                {/* Email */}
+                <label class="form-label">Email</label>
+                <input type="email" name="email" placeholder="Enter Email Address" required onChange={handleChange}
+                    value={data.email} class="form-control" style={{width:500}}/>
+                {/* Password */}
+                <label class="form-label">Password</label>
+                <input type="password" name="password" placeholder="Enter Password" required onChange={handleChange} value={data.password} class="form-control"  style={{width:500}} />
+                {error && <div className="error_msg">{error}</div>}
+                <button type="button" id="forgetpass" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Forget Password?
+                </button>
+                <br />
+                <input type="submit" className="btn btn-danger" id="submitbutton" value="Login" />
+            </form>
+            {/* forget password pop up */}
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Please enter your email</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            We will send a password reset code to your registered email address
+                            {/* Email */}
+                            <br /><br />
+                            <input type="email" name="email" placeholder="Enter your Email Address" required onChange={handleChange}
+                                value={data.email} class="form-control" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="textbox">
-                <i className="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" onChange={handleChange}  value={data.password}/>
-            </div>
-            {error && <div className="error_msg">{error}</div>}
-        <input type="submit" className="btn" value="Login"/>
-        <p> Forgot your password? Click here</p>
-        </form>
         </div>
-    </div>
-  )
+
+    )
 };
 
 export default Login;

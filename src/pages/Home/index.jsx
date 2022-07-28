@@ -4,11 +4,12 @@ import Footer from '../../components/common/Footer'
 import Menu from '../../components/common/Menu'
 import Navbar from '../../components/common/Navbar'
 import Banner from '../../components/Home/Banner'
+import AboutUs from '../../pages/About/AboutUs'
+import Locations from '../../pages/Locations/locations'
 import { getFoodItems } from '../../API calls/FoodItems';
 
 const Home = () => {
-    const id = Number(window.location.pathname.split('/')[1]) // ans is 3
-    localStorage.setItem("RID", id)
+    const id = 3 
     const [ItemsData, setItemsData] = React.useState([]);
     const [menuItemsData, setmenuItemsData] = React.useState([]);
     var prior = [];
@@ -41,17 +42,23 @@ const Home = () => {
     };
 
     return (
-        <div>
-            
+<>
+<div style={{marginLeft:50,marginRight:50,marginTop:10}}>
+             <Navbar />
             {/* banner */}
             <Banner handleScrollMenu={handleScrollMenu} />
             {/* Menu */}
             <Menu list={menuItemsData} ref={menuRef} />
-            {/* Footer */}
-            <Footer />
+            <AboutUs />
+            {/* Locations */}
+            <Locations />
             {/* Cart Count Button */}
             <CardCountButton />
         </div>
+         {/* Footer */}
+         <Footer />
+           
+        </>
     );
 };
 

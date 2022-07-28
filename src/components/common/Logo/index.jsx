@@ -3,7 +3,7 @@ import './style.css';
 import { getProfile } from '../../../API calls/Restaurants';
 
 const Logo = () => {
-  const id = localStorage.getItem("RID")
+  const id = 3
   const [restaurant, setRestuarant] = React.useState([]);
   const [Logo, setLogo] = React.useState("");
   const [Cuisine, setCuisine] = React.useState("");
