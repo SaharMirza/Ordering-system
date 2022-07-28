@@ -10,7 +10,7 @@ const EmptyCart = () => {
     }
   
     if (navigate) {
-      return <Navigate to="/" />;
+      return <Navigate to="/home" />;
     }
   return (
     <div className='emptyCart'>

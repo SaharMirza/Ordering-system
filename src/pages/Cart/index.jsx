@@ -23,7 +23,8 @@ const Cart = ({ cartCount, cartList, cartTotal }) => {
   // Adding Order to Database
   const ordersave = () => {
     CreateOrder(cartList, cartTotal,devadd,specinst,paymethod).then((response) => {
-      alert("Order Successful")     
+      alert("Order Successful")  
+      window.location = "/Home"; 
     })
   }
 
